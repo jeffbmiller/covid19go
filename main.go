@@ -53,14 +53,12 @@ func parseCountries() []Country {
 	}
 	defer response.Body.Close()
 
-	// Create a goquery document from the HTTP response
 	document, err := goquery.NewDocumentFromReader(response.Body)
 	if err != nil {
 		log.Fatal("Error loading HTTP response body. ", err)
 	}
 
 	countries := []Country{}
-	// Find and print image URLs
 	document.Find("table").Each(func(index int, tablehtml *goquery.Selection) {
 		tablehtml.Find("tr").Each(func(indextr int, rowhtml *goquery.Selection) {
 			if indextr != 0 {
