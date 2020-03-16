@@ -14,11 +14,31 @@ import (
 
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/", covid)
+	router.HandleFunc("/countries", allCountriesHandler)
+	router.HandleFunc("/countries/{name}", countryHandler)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
-func covid(w http.ResponseWriter, r *http.Request) {
+func countryHandler(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	countryName := params["name"]
+
+	countries := parseCountries()
+
+	var country Country
+
+	for _, c := range countries {
+		if strings.ToLower(c.Name) == strings.ToLower(countryName) {
+			country = c
+			break
+		}
+	}
+
+	foo, _ := json.Marshal(country)
+	fmt.Fprintf(w, string(foo))
+}
+
+func allCountriesHandler(w http.ResponseWriter, r *http.Request) {
 
 	countries := parseCountries()
 
