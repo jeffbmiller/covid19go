@@ -13,8 +13,6 @@ docker build -t covid19go .
 ```
 3. Run the Docker image
 ```
-docker 
-```
 docker run -d -p 5000:8080 covid19go
 ```
 4. Open your web browser and go to http://localhost:5000/countries
