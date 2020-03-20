@@ -3,16 +3,19 @@
 A RESTful API example for getting Covid-19 statistics all around written in GO.
 
 ## Installaton & Run
-1. Clone repository and open with Visual Studio in Dev Container
-2. Open a Terminal in the dev container and run the command 
-
-To Install dependencies
+1. Clone Repository 
 ```
-go get -d
+git clone https://github.com/jeffbmiller/covid19go.git
 ```
-To Run application
+2. Inside the directory run this command to build the docker image
 ```
-go run main.go
+docker build -t covid19go .
 ```
-3. Open your web browser and go to http://localhost:8080/countries
-4. http://localhost:8080/countries/<countryname> will show stats for that country only
+3. Run the Docker image
+```
+docker 
+```
+docker run -d -p 5000:8080 covid19go
+```
+4. Open your web browser and go to http://localhost:5000/countries
+ http://localhost:5000/countries/<countryname> will show stats for that country only
