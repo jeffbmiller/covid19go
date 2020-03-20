@@ -4,4 +4,4 @@ WORKDIR /
 COPY . .
 RUN go get -d
 
-CMD ["go","run","main.go"]
+ENTRYPOINT ["go","run","main.go"]
